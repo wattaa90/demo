@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 @RestController
+@Slf4j
 public class DemoController {
 
     private static final String APPLICATION_KEY = "applicationKey";
@@ -27,7 +28,7 @@ public class DemoController {
              HttpServletRequest request, HttpServletResponse response)
              throws  IOException {
 
-         //log.info("Debut du telechargement :");
+         log.info("Debut du telechargement :");
 
          try (InputStream responseStream = getInputStream()) {
              try (BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream())) {
@@ -54,7 +55,7 @@ public class DemoController {
             HttpServletRequest request
     ) {
 
-         //log.info("File uploaded : " ,file);
+         log.info("File uploaded : " ,file);
          return ResponseEntity.ok(file.getName());
     }
 
